@@ -20,6 +20,11 @@ app.use('/users', usersRouter);
 app.use('/forms', formsRouter);
 app.use('/journals', journalRouter);
 
+// app.use('/home', (req, res, next) => {
+//   console.log('went into /home on the server side for some reason');
+//   return next();
+// });
+
 app.get('/', (req, res) => {
   return res.send('This is a test!');
 });

@@ -9,21 +9,33 @@ import UserPage from './UserPage.jsx';
 import JournalContainer from './JournalContainer.jsx';
 import Questionnaire from "../Components/Questionnaire.jsx";
 
-const App = () => {    
+const UserContext = React.createContext({
+    user: {
+        id: 'o7239fja98psdfja',
+        name: 'Fred'
+    },
+    // setUser function
+});
+
+const App = () => {
+    const [user, setUser] = useState(null);
+
     return(
         <div>
-            <Routes>
-                <Route path='/' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/home' element={<Home />} />
-                <Route path='/questions' element={ <Questionnaire /> } />
-                <Route path='/userPage' element={ <UserPage /> } />
-                <Route path='/journals' element={ <JournalContainer /> } />
-                {/* 
-                    This is a route to a stretch feature.
-                    <Route path='/sleep-data' element={} /> 
-                */}
-            </Routes>
+            <UserContext.Provider value={{user, setUser}} >
+                <Routes>
+                    <Route path='/' element={ <Login />} />
+                    <Route path='/register' element={ <Register />} />
+                    <Route path='/home' element={ <Home />} />
+                    <Route path='/questions' element={ <Questionnaire /> } />
+                    <Route path='/userPage' element={<UserPage /> } />
+                    <Route path='/journals' element={ <JournalContainer /> } />
+                    {/* 
+                        This is a route to a stretch feature.
+                        <Route path='/sleep-data' element={} /> 
+                    */}
+                </Routes>
+            </UserContext.Provider >
         </div>
     )
 }

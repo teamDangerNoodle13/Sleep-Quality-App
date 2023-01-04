@@ -1,7 +1,6 @@
 import e from "cors";
 import React, { useEffect, useState } from "react";
-import { Link, redirect } from "react-router-dom";
-
+import { Link, redirect, useNavigate } from "react-router-dom";
 
 const LoginIsland = () => {
 
@@ -16,6 +15,7 @@ const LoginIsland = () => {
   const onChange = e => {
     setData({...data, [e.target.name]: e.target.value});
   };
+  const navigate = useNavigate();
 
 // FILL OUT ONCHANGE
 
@@ -34,9 +34,8 @@ const LoginIsland = () => {
         mode: 'cors',
         body: JSON.stringify(userObj)
         })
-        .then((response) => {
-          response.json()
-          return response.redirect("/home");
+        .then(response => {
+          (response !== null) ? navigate('/home') : navigate('/register');
         })
         .catch(err => {
           console.log('ERROR: ', err);
