@@ -14,3 +14,4 @@ const userSchema = mongooseInstance.Schema(
 const UserModel = mongooseInstance.model('user', userSchema);
 
 module.exports = UserModel;
+
