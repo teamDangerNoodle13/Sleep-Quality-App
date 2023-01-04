@@ -21,8 +21,8 @@ const LoginIsland = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-     const email = e.target.form[0].value;
-     const password = e.target.form[1].value;
+     const email = e.target[0].value;
+     const password = e.target[1].value;
      const userObj = { email, password };
 
       fetch('http://localhost:3000/users/login', {
@@ -36,7 +36,7 @@ const LoginIsland = () => {
         })
         .then((response) => {
           response.json()
-          return redirect("/home");
+          return response.redirect("/home");
         })
         .catch(err => {
           console.log('ERROR: ', err);

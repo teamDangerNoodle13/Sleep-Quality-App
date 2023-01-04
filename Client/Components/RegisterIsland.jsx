@@ -34,7 +34,7 @@ const onChange = e => {
         body: JSON.stringify(userObj)
         })
         .then((response) => response.json())
-        return redirect("/home");
+        return response.redirect("/home");
 }
 
     return (
