@@ -1,4 +1,6 @@
 const mongooseInstance = require('./mongoUtil.js');
+const bcrypt = require('bcrypt')
+const SALT_WORK_FACTOR = 10;
 
 const userSchema = mongooseInstance.Schema(
   {
@@ -14,4 +16,3 @@ const userSchema = mongooseInstance.Schema(
 const UserModel = mongooseInstance.model('user', userSchema);
 
 module.exports = UserModel;
-
