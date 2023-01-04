@@ -47,14 +47,23 @@ userController.addUser = async (req, res, next) => {
 userController.verifyUser = (req, res, next) => {
   const { email, password, name } = req.body;
 
+  
+
   User.findOne({
     email: email
   })
     .then((user) => {
-      if (user.email === email && user.password === password) {
+
+      bcrypt.compare(password, user.password, function(err, result) {
+        if (result) {
+          console.log('passwords match')
+        } else {
+          console.log('passwords do not match')
+        }
+      });
         res.locals.user = 'login successful';
         return next();
-      }
+  
     })
     .catch((error) => {
       return next({
