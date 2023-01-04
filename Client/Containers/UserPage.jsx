@@ -2,15 +2,15 @@ import HomeIsland from '../Components/HomeIsland.jsx';
 import Navigation from "./Navigation.jsx";
 import React from 'react';
 
-const Home = () => {
+const userPage = () => {
 
   return (
-    <div className='home-container'>
+    <div className='userPage-container'>
       <Navigation />
-      <h3>Welcome Stefan!</h3> // DYNAMIC
+      
       <HomeIsland />
     </div>
   )
 }
 
-export default Home;
+export default userPage;
