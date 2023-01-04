@@ -2,13 +2,15 @@ import HomeIsland from '../Components/HomeIsland.jsx';
 import Navigation from "./Navigation.jsx";
 import React from 'react';
 
-const Home = () => {
+const Home = (props) => {
 
   return (
     <div className='home-container'>
-      <Navigation />
-      <h3>Welcome Stefan!</h3> // DYNAMIC
-      <HomeIsland />
+      <UserContext.Consumer>
+        <Navigation />
+        <h3>Welcome {props.user.name || 'stranger'}!</h3> // DYNAMIC
+        <HomeIsland />
+      </UserContext.Consumer>
     </div>
   )
 }
