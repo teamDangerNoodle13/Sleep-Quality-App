@@ -25,9 +25,9 @@ userController.getAllUsers = (req, res, next) => {
  * TODO: re-write once ID auto-increment is added for the User model
  */
 userController.addUser = (req, res, next) => {
-  console.log("reqBody", req.body)
-  const { firstName, username, password } = req.body;
-  User.create({ firstName: firstName, username: username, password: password })
+  console.log('got into addUser')
+  const { email, password, name } = req.body;
+  User.create({ email: email, password: password, name: name })
     .then((userDoc) => {
       res.locals.newUser = userDoc;
       return next();
