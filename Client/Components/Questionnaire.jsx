@@ -83,22 +83,30 @@ function Questionnaire() {
         event.preventDefault();
         alert(`Total Sleep Hygiene Score: ${sum}`)
         console.log('submitted');
-        // fetch('/forms', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         user: userID,
-        //         answers: answers,
-        //         totalScore: sum
-        //     })
-        //     .then((res) => res.json())
-        //     .then((data) => console.log(data))
-            
-        // })
+        fetch ('/forms', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: userId,
+                answers: answers,
+                totalScore: sum
+            })
+        }) 
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+
         // NEED TO ADD LOGIC HERE TO HANDLE SUBMITTING THE FINISHED FORM
+        
+
         // REQ.BODY OF POST SHOULD BE USERID, ANSWERS ARRAY, TOTAL SCORE
+
     }
     function handleNext() {
         console.log('next', sum);
