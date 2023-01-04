@@ -1,8 +1,11 @@
 import { BrowserRouter, Navigate, Route, Routes, useRevalidator } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import {userNavigate} from "react-router-dom";
 
 import Navigation from "../Containers/Navigation.jsx";
 import Question from "./Question.jsx";
+
+const navigate =  useNavigate();
 
 function Questionnaire() {
     // currentQuestion is a number that corresponds to an index in the answers array
@@ -96,7 +99,7 @@ function Questionnaire() {
         }) 
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
+        (data !== null) ? navigate('/userPage') : alert('Error submitting form');
         })
         .catch((err) => {
             console.log(err);
