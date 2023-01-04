@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { redirect } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 
 
 const RegisterIsland = () => {
@@ -16,6 +16,7 @@ const { email, password, name} = data;
 const onChange = e => {
   setData({...data, [e.target.name]: e.target.value});
 };
+const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,13 +34,14 @@ const onChange = e => {
         mode: 'cors',
         body: JSON.stringify(userObj)
         })
-        .then((response) => response.json())
-        return response.redirect("/home");
+        .then(response => {
+          (response !== null) ? navigate('/home') : console.log('invalid input');
+        })
 }
 
     return (
         <div className="login-container">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} >
             <input
                 className="firstName"
                 type="text"
