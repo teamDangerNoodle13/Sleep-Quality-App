@@ -9,13 +9,13 @@ router.get('/', userController.getAllUsers, (req, res) => {
   return res.status(200).json(res.locals.users);
 });
 
-// POST http://localhost:3000/users
-// router.post('/', userController.verifyUser, (req, res) => {
-//   return res.status(200).json(res.locals.user);
-// });
+// POST http://localhost:3000/users/login
+router.post('/login', userController.verifyUser, (req, res) => {
+  return res.status(200).json(res.locals.user);
+});
 
-// POST http://localhost:3000/users/new
-router.post('/', userController.addUser, (req, res) => {
+// POST http://localhost:3000/users/register
+router.post('/register', userController.addUser, (req, res) => {
   
   return res.status(200).json(res.locals.newUser);
 });

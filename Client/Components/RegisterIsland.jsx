@@ -5,13 +5,13 @@ import { redirect } from "react-router-dom";
 const RegisterIsland = () => {
 
   const [data, setData] = useState({
-    firstName: "",
-    username: "",
-    password: ""
+    email: "",
+    password: "",
+    name: ""
 }
 );
 
-const {firstName, username, password} = data;
+const { email, password, name} = data;
 
 const onChange = e => {
   setData({...data, [e.target.name]: e.target.value});
@@ -19,12 +19,12 @@ const onChange = e => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const firstName = e.target[0].value;
-    const username = e.target[1].value;
+    const name = e.target[0].value;
+    const email = e.target[1].value;
     const password = e.target[2].value;
-    const userObj = {firstName,username, password};
+    const userObj = {email, password, name};
 
-      fetch('http://localhost:3000/users', {
+      fetch('http://localhost:3000/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const onChange = e => {
         body: JSON.stringify(userObj)
         })
         .then((response) => response.json())
-        .then(redirect("/home"));
+        return redirect("/home");
 }
 
     return (
@@ -43,18 +43,18 @@ const onChange = e => {
             <input
                 className="firstName"
                 type="text"
-                name="firstName"
+                name="name"
                 placeholder="First Name..."
-                value ={firstName}
+                value ={name}
                 onChange={onChange}
                 required
                 />
                 <input
                 className="email"
                 type="email"
-                name="username"
+                name="email"
                 placeholder="email..."
-                value ={username}
+                value ={email}
                 onChange={onChange}
                 required
                 />
@@ -68,8 +68,8 @@ const onChange = e => {
                 required
                 />
                 <div id= "buttonRow">
-                  <button type ="submit" className="login" id="login" >
-                    Log in
+                  <button type ="submit" className="register" id="register" >
+                    Register
                   </button>
                 </div>
             </form>

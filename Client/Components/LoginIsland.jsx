@@ -6,12 +6,12 @@ import { Link, redirect } from "react-router-dom";
 const LoginIsland = () => {
 
   const [data, setData] = useState({
-        username: "",
+        email: "",
         password: ""
     }
   );
 
-  const {username, password} = data;
+  const { email, password} = data;
 
   const onChange = e => {
     setData({...data, [e.target.name]: e.target.value});
@@ -21,11 +21,11 @@ const LoginIsland = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-     const username = e.target.form[0].value;
+     const email = e.target.form[0].value;
      const password = e.target.form[1].value;
-     const userObj = {username, password};
+     const userObj = { email, password };
 
-      fetch('http://localhost:3000/users', {
+      fetch('http://localhost:3000/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,9 +50,9 @@ const LoginIsland = () => {
                 <input
                 className="email"
                 type="email"
-                name="username"
+                name="email"
                 placeholder="email..."
-                value ={username}
+                value ={email}
                 onChange={onChange}
                 required
                 />
