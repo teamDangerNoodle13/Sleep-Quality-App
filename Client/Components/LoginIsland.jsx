@@ -1,5 +1,6 @@
 import e from "cors";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const LoginIsland = () => {
@@ -12,11 +13,11 @@ const LoginIsland = () => {
 
   const {username, password} = data;
 
-  //const onChange = e => {
-//     setData({...data, [e.target.name]: e.target.value});
-//   };
+  const onChange = e => {
+    setData({...data, [e.target.name]: e.target.value});
+  };
 
-
+// FILL OUT ONCHANGE
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,7 +70,7 @@ const LoginIsland = () => {
                   <button type ="submit" className="login" id="login" >
                     Log in
                   </button>
-                  <Link to="/register" className="register" id="register" onClick={routeChange}>
+                  <Link to="/register" className="register" id="register">
                     Sign Up
                   </Link>
                 </div>

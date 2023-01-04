@@ -8,7 +8,7 @@ const Login = () => {
     <div className='login-container'>
       <Navigation />
       <h3>Hello</h3>
-      <HomeIsland />
+      <LoginIsland />
     </div>
   )
 }

@@ -2,7 +2,7 @@ import HomeIsland from '../Components/HomeIsland.jsx';
 import Navigation from "./Navigation.jsx";
 import React from 'react';
 
-const userPage = () => {
+const UserPage = () => {
 
   return (
     <div className='userPage-container'>
@@ -13,4 +13,4 @@ const userPage = () => {
   )
 }
 
-export default userPage;
+export default UserPage;
