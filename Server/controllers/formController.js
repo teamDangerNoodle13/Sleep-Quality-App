@@ -7,9 +7,9 @@ const formController = {};
  *  TODO: link journal entries
  */
 formController.saveFormResponse = (req, res, next) => {
-  const { user, answers, totalScore } = req.body;
+  const { userId, answers, sum } = req.body;
 
-  Form.create({ userId: user, answers: answers, totalScore: totalScore })
+  Form.create({ user : userId, answers: answers, totalScore: sum })
     .then((formDoc) => {
       res.locals.savedFormResponses = formDoc;
       return next();

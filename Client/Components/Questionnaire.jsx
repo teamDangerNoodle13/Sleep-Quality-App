@@ -1,8 +1,11 @@
 import { BrowserRouter, Navigate, Route, Routes, useRevalidator } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import {userNavigate} from "react-router-dom";
 
 import Navigation from "../Containers/Navigation.jsx";
 import Question from "./Question.jsx";
+
+const navigate =  useNavigate();
 
 function Questionnaire() {
     // currentQuestion is a number that corresponds to an index in the answers array
@@ -83,22 +86,30 @@ function Questionnaire() {
         event.preventDefault();
         alert(`Total Sleep Hygiene Score: ${sum}`)
         console.log('submitted');
-        // fetch('/forms', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         user: userID,
-        //         answers: answers,
-        //         totalScore: sum
-        //     })
-        //     .then((res) => res.json())
-        //     .then((data) => console.log(data))
-            
-        // })
+        fetch ('/forms', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: userId,
+                answers: answers,
+                totalScore: sum
+            })
+        }) 
+        .then((res) => res.json())
+        .then((data) => {
+        (data !== null) ? navigate('/userPage') : alert('Error submitting form');
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+
         // NEED TO ADD LOGIC HERE TO HANDLE SUBMITTING THE FINISHED FORM
+        
+
         // REQ.BODY OF POST SHOULD BE USERID, ANSWERS ARRAY, TOTAL SCORE
+
     }
     function handleNext() {
         console.log('next', sum);

@@ -1,6 +1,6 @@
 # Sleep-Quality-App
 
-                                   # --- Getting Started --- 
+                                   # --- Getting Started --- #
 To get started with the application: 
  - [ ] Clone the repository to a directory on your computer.
  - [ ] Run `npm install` inside the root directory to install the packages for the frontend.
