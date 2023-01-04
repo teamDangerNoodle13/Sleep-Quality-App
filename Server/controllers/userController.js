@@ -6,19 +6,21 @@ const userController = {};
  * Middleware to show all users in database.
  *  TODO: remove once of of dev phase
  */
-userController.getAllUsers = (req, res, next) => {
-  User.find()
-    .then((usersDoc) => {
-      res.locals.users = usersDoc;
-      return next();
-    })
-    .catch((error) => {
-      return next({
-        log: `ERROR in userController.getAllUsers ${error}`,
-        message: { err: `Encountered an error in userController.getAllUsers` },
-      });
-    });
-};
+
+// DEV
+// userController.getAllUsers = (req, res, next) => {
+//   User.find()
+//     .then((usersDoc) => {
+//       res.locals.users = usersDoc;
+//       return next();
+//     })
+//     .catch((error) => {
+//       return next({
+//         log: `ERROR in userController.getAllUsers ${error}`,
+//         message: { err: `Encountered an error in userController.getAllUsers` },
+//       });
+//     });
+// };
 
 /**
  * Middleware to add a user to database.
@@ -40,6 +42,25 @@ userController.addUser = (req, res, next) => {
     });
 };
 
+userController.verifyUser = (req, res, next) => {
+  const { email, password, name } = req.body;
+
+  User.findOne({
+    email: email
+  })
+    .then((user) => {
+      if (user.email === email && user.password === password) {
+        res.locals.user = 'login successful';
+        return next();
+      }
+    })
+    .catch((error) => {
+      return next({
+        log: `ERROR in userController.verifyUser ${error}`,
+        message: { err: `Encountered an error in userController.verifyUser` },
+      })
+    })
+}
 
 
 module.exports = userController;
