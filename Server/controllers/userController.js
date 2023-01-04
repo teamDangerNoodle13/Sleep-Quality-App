@@ -1,5 +1,5 @@
 const User = require('../models/userModel.js');
-
+const bcrypt = require('bcrypt')
 const userController = {};
 
 /**
@@ -26,12 +26,14 @@ const userController = {};
  * Middleware to add a user to database.
  * TODO: re-write once ID auto-increment is added for the User model
  */
-userController.addUser = (req, res, next) => {
+userController.addUser = async (req, res, next) => {
   console.log('got into addUser')
   const { email, password, name } = req.body;
-  User.create({ email: email, password: password, name: name })
+  const hash = await bcrypt.hash(password, 10)
+  User.create({ email: email, password: hash, name: name })
     .then((userDoc) => {
       res.locals.newUser = userDoc;
+      // console.log('this is the hashed password', userDoc.hash);
       return next();
     })
     .catch((error) => {
