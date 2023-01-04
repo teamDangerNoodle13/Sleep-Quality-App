@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "nodemon index.js",
-    "dev": "concurrently \"node server/server.js\" \" webpack serve --mode development --open --hot\"",
+    "dev": "concurrently \"nodemon server/server.js\" \" webpack serve --mode development --open --hot\"",
     "build": "webpack --mode production"
   },
   "repository": {
