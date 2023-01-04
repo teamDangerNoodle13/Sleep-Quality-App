@@ -53,15 +53,17 @@ userController.verifyUser = (req, res, next) => {
     email: email
   })
     .then((user) => {
+      if (!user) return 'user not found';
 
       bcrypt.compare(password, user.password, function(err, result) {
         if (result) {
           console.log('passwords match')
+          
         } else {
           console.log('passwords do not match')
         }
       });
-        res.locals.user = 'login successful';
+        res.locals.user= user;
         return next();
   
     })
