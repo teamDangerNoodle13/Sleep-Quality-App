@@ -10,8 +10,12 @@ router.get('/', userController.getAllUsers, (req, res) => {
 });
 
 // POST http://localhost:3000/users
+// router.post('/', userController.verifyUser, (req, res) => {
+//   return res.status(200).json(res.locals.user);
+// });
+
+// POST http://localhost:3000/users/new
 router.post('/', userController.addUser, (req, res) => {
   return res.status(200).json(res.locals.newUser);
 });
-
 module.exports = router;

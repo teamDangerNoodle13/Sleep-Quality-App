@@ -1,6 +1,6 @@
 import e from "cors";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 
 
 const LoginIsland = () => {
@@ -21,29 +21,26 @@ const LoginIsland = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-      const form = e.target;
-      const formData = new FormData(form);
-        console.log('forData', formData)
+     const username = e.target.form[0].value;
+     const password = e.target.form[1].value;
+     const userObj = {username, password};
 
-      const formJSON = Object.fromEntries(formData.entries())
-        console.log('entry', formJSON.newEntry)
-
-        // fetch('http://localhost:3000/users', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Access-Control-Allow-Origin': '*',
-        //     },
-        //     mode: 'cors',
-        //     body: JSON.stringify({ 
-        //         username: '63b3234df79c9575703ac220',
-        //         password: formJSON.newEntry
-        //     })
-        // })
-        // .then((response) => response.json())
-        // document.getElementById('add-journal').reset();
-
-
+      fetch('http://localhost:3000/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          },
+        mode: 'cors',
+        body: JSON.stringify(userObj)
+        })
+        .then((response) => {
+          response.json()
+          return redirect("/home");
+        })
+        .catch(err => {
+          console.log('ERROR: ', err);
+        })
 }
 
 
@@ -56,6 +53,7 @@ const LoginIsland = () => {
                 name="username"
                 placeholder="email..."
                 value ={username}
+                onChange={onChange}
                 required
                 />
                 <input
@@ -64,6 +62,7 @@ const LoginIsland = () => {
                 name="password"
                 placeholder="password..."
                 value ={password}
+                onChange={onChange}
                 required
                 />
                 <div id= "buttonRow">
