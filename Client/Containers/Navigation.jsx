@@ -9,7 +9,7 @@ import React from 'react';
 const Navigation = () => {
   return (
     <div className='nav'>
-        <Link to="/">
+        <Link to="/home">
             <AiOutlineHome 
                 size={'2em'} 
                 style={{color: '#F4f5f7'}}
