@@ -2,7 +2,7 @@ node_modules
 /Server/node_modules
 
 # dotenv environment variables file
-.env
+#.env
 
 # IDE - VSCode
 .vscode/*
