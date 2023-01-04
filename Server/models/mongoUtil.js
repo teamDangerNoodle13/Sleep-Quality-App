@@ -12,9 +12,13 @@ mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    dbName: 'Sleep-Quality-App',
+    dbName: 'SleepQualityApp',
   })
   .then(() => console.log('Connected to Mongo DB.'))
   .catch((err) => console.log(err));
 
 module.exports = mongoose;
+
+
+// mongoose.connect('mongodb://user:pass@127.0.0.1:port/database');
+// 'mongodb://
