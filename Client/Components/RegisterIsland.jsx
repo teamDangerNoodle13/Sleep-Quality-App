@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, redirect, useNavigate } from "react-router-dom";
 
 
-const RegisterIsland = () => {
+const RegisterIsland = (props) => {
 
   const [data, setData] = useState({
     email: "",
@@ -35,9 +35,25 @@ const navigate = useNavigate();
         body: JSON.stringify(userObj)
         })
         .then(response => {
-          (response !== null) ? navigate('/home') : console.log('invalid input');
+          if(response === null) {
+            navigate('/register');
+          } else {
+            return response.json();
+          }
         })
-}
+        .then((json) => {
+          const { _id, name } = json;
+          const userData = {
+            id: _id,
+            name: name
+          }
+          props.setUser(userData);
+          navigate('/home');
+        })
+        .catch(err => {
+          console.log('ERROR: ', err);
+        })
+  }
 
     return (
         <div className="register-container">

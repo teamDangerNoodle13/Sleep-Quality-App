@@ -1,13 +1,20 @@
 import RegisterIsland from '../Components/RegisterIsland.jsx';
 import React from 'react';
+import UserContext from './UserContext.jsx';
 
 const Register = () => {
 
   return (
-    <div className='register-container'>
+    <UserContext.Consumer>
+      {(value) => {
+      return (  
+        <div className='register-container'>
       
-      <RegisterIsland />
-    </div>
+        <RegisterIsland setUser={value.setUser}/>
+        </div>
+      )
+     }}
+    </UserContext.Consumer>
   )
 }
 
