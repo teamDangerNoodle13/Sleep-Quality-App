@@ -7,9 +7,9 @@ const formController = {};
  *  TODO: link journal entries
  */
 formController.saveFormResponse = (req, res, next) => {
-  const { user, answers, totalScore } = req.body;
+  const { userId, answers, totalScore } = req.body;
 
-  Form.create({ user: user, answers: answers, totalScore: totalScore })
+  Form.create({ userId: userId, answers: answers, totalScore: totalScore })
     .then((formDoc) => {
       res.locals.savedFormResponses = formDoc;
       return next();
@@ -65,5 +65,14 @@ formController.getSingleForm = (req, res, next) => {
       });
     });
 };
+
+formController.replyToForm = (req, res, next) => {
+  if(!req.query.score) { next('you fucked up') };
+  const reply = "Thank you for taking our survey and here is your score. If you scored 0-8 congratulations, your sleep hygiene is impeccable. Otherwise more works need to be done and you access the following links for more information.";
+  res.locals.replyToForm = reply;
+  return next();
+};
+
+
 
 module.exports = formController;

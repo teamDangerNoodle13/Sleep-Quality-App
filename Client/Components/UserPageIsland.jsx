@@ -6,7 +6,7 @@ import { VscNotebook } from 'react-icons/vsc';
 
 const UserPageIsland = (props) => {
     return (
-        <div>
+        <div className="UPIslandContainer">
             <Link to="/home/journals">
             <div className="userPageJournal">
                 {/* <VscNotebook> */}
@@ -17,7 +17,7 @@ const UserPageIsland = (props) => {
             <div className= "userPageResAndScore">
                 Sleep Score: {props.sum}
                 <div>
-                    Response:
+                    {props.response}
                 </div> 
             </div>
             <h2>Resources</h2>

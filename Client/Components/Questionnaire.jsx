@@ -93,7 +93,7 @@ function Questionnaire(props) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                user: 3,
+                userId: props.userId,
                 answers: answers,
                 totalScore: sum
             })
