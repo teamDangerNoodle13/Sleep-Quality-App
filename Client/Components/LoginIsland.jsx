@@ -63,7 +63,7 @@ const LoginIsland = (props) => {
                   className="email"
                   type="email"
                   name="email"
-                  placeholder="email..."
+                  placeholder="Email..."
                   value ={email}
                   onChange={onChange}
                   required
@@ -72,7 +72,7 @@ const LoginIsland = (props) => {
                   className="password"
                   type="password"
                   name="password"
-                  placeholder="password..."
+                  placeholder="Password..."
                   value ={password}
                   onChange={onChange}
                   required

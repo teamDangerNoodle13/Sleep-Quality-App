@@ -31,7 +31,7 @@ a{
         hsl(268deg 81% 23%) 78%,
         hsl(268deg 79% 21%) 100%
       );
-    width: 506px;
+    width: 100%;
     height: 3.75em;
     color: #F4f5f7;
     letter-spacing: .5em;
@@ -59,7 +59,8 @@ a{
     font-size: 1.5em;
 
     .island-buttons {
-        background-color: #3f334d;
+        // background-color: #3f334d;
+        background-color: rgb(39, 71, 100);
         color: #d9dce5;
         text-align: end;
         letter-spacing: 0.05em;
@@ -68,15 +69,18 @@ a{
         justify-content: space-between;
         align-items: center;
 
-        margin: 0.20em;
+        margin: 0.30em;
         padding: 0.5em;
 
         height: 3em;
         width: 450px;
         min-width: 300px;
 
-        border-radius: 0.25em;
+        border-radius: 1em;
         box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    }
+    .island-buttons:hover {
+        background-color: rgb(52, 83, 112);
     }
 }
 
@@ -92,12 +96,20 @@ a{
         margin-block-start: 1em;
         margin-block-end: 0.3em;
     }
-
+    input {
+        display: flex;
+        flex-direction: row;
+        margin: 10px 0px 20px 0px;
+        padding: 1em 1em 1em;
+        border-radius: 1em;
+        width: 100%;
+    }
     #buttonRow{
         display: flex;
         justify-content: center;
         align-self: space-between;
-        padding-top: .30em;
+        padding-top: .10em;
+        margin-top: -.5em;
 
         .login{
             background-color: #3f334d;
@@ -105,7 +117,7 @@ a{
             text-align: end;
             letter-spacing: 0.05em;
             font-family: Comfortaa;
-            font-size: 0.5em;
+            font-size: .75em;
 
             display: flex;
             justify-content: space-between;
@@ -128,7 +140,7 @@ a{
         align-self: center;
         text-decoration: none;
 
-        font-size: 0.5em;
+        font-size: 0.75em;
 
         background-image: linear-gradient(
         220deg,
@@ -160,11 +172,13 @@ a{
     }
 }
 
-.long-form{
-    display: flex;
-    flex-direction: row;
-    align-self: center;
-}
+//kinda made it looked weird so i commented it out -brandon, also it was .long-form?
+// .login-form{
+//     display: flex;
+//     flex-direction: row;
+//     // align-self: center;
+//     justify-content: center;
+// }
 
 .register-container{
     display: flex;
@@ -178,13 +192,11 @@ a{
     
     input{
         margin: 10px 0;
+        padding: 1em 1em 1em;
+        border-radius: 1em;
+        width: 100%;
     }
-    input[type=email]{
 
-    }
-    input[type=password]{
-
-    }
 
 }
 #register-form{
@@ -195,7 +207,7 @@ a{
     width: 300px;
 
     margin-top: 1em;
-
+    
     #buttonRow {
         display: flex;
         flex-direction: column;
@@ -205,9 +217,9 @@ a{
         #register{
             color: white;
             font-family: Comfortaa;
-            width: 6em;
+            width: 7em;
             height: 2em;
-            font-size: 1em;
+            font-size: 1.75em;
 
             border: none;
             border-radius: 0.25em;
@@ -230,7 +242,7 @@ a{
             text-decoration: none;
             background-color: #3f334d;
             font-family: Comfortaa;
-            font-size: 1em;
+            font-size: 1.2em;
             color: #d9dce5;
     
             margin: 0.75em;
