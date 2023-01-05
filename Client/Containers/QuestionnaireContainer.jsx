@@ -7,7 +7,7 @@ const QuestionnaireContainer = () => {
     <UserContext.Consumer>
       {(value) => {
         return (
-        <Questionnaire setSum={value.setSum} />
+        <Questionnaire setSum={value.setSum} userId={value.user.id} />
         )
       }}
     </UserContext.Consumer>
