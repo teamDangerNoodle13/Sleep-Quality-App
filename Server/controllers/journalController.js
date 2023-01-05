@@ -7,9 +7,10 @@ const journalController = {};
  *  
 */
 journalController.saveJournal = (req, res, next) => {
+    const createdAt = new Date().toJSON();
     const { user, entry } = req.body;
     
-    Journal.create({ userId: user, entry: entry })
+    Journal.create({ userId: user, entry: entry, createdAt: createdAt })
         .then((journalDoc) => {
         res.locals.savedJournal = journalDoc;
         return next();

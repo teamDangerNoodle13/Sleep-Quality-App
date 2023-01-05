@@ -32,7 +32,8 @@ const App = () => {
                         <Route path='/sleep-data' element={} /> 
                     */}
                 </Routes>
-            </div>
+            {/* </UserContext.Provider > */}
+        </div>
         </UserContext.Provider >
     )
 }

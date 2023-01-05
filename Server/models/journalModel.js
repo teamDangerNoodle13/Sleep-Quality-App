@@ -5,8 +5,8 @@ const journalSchema = mongooseInstance.Schema(
     userId: { type: mongooseInstance.Types.ObjectId, ref: 'user' },
     //formId: { type: mongooseInstance.Types.ObjectId, ref: 'form' },
     entry: { type: String },
-  },
-  { timestamps: true }
+    createdAt: { type: Date }
+  }
 );
 
 const JournalModel = mongooseInstance.model('journal', journalSchema);

@@ -2,70 +2,99 @@ import React, { useEffect, useState } from "react";
 
 import Entry from "../Components/Entry.jsx";
 import Navigation  from "../Containers/Navigation.jsx";
+import JournalEntries from "../Components/JournalEntries.jsx";
 import NewJournal from "../Components/NewJournal.jsx";
+import UserContext from "./UserContext.jsx";
 
-function JournalContainer() {
-    const [entries, setEntries] = useState([]);
+class JournalContainer extends React.Component {
+    constructor(props) {
+        super(props);
 
-    useEffect( () => {
-        fetch('http://localhost:3000/journals?' + new URLSearchParams({
-            user: '63b3234df79c9575703ac220'
-        }))
-        .then((response) => response.json())
-        .then(data => {
-            setEntries(data);
-        })
-    }, [entries, setEntries])
+        this.state = {
+            entries: []
+        };
 
-    function handleDelete(e, key) {
-        // console.log('e.target', e.target.key)
-        
-        fetch(`/http://localhost:3000/journals/${key}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: {
-                
-            }
-        })
+        this.makeEntries = this.makeEntries.bind(this);
     }
 
-    function handleUpdate() {
-        fetch('/http://localhost:3000/journals', {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: {
-                
-            }
-        })
+    componentDidMount(prevProps, prevState) {
+        let value = this.context;
+            fetch('http://localhost:3000/journals?' + new URLSearchParams({
+                user: value.user.id
+            }))
+            .then((response) => response.json())
+            .then(data => {
+                console.log('data returned in Journal Container is an array: ' + Array.isArray(data));
+                this.setState({ entries: data });
+            })
     }
 
-    const journalEntries = entries.reverse().map((entry) => {
-        return (
-            <Entry 
+    componentDidUpdate(prevProps, prevState) {
+        let value = this.context;
+        if(this.state.entries !== prevState.entries) {
+            fetch('http://localhost:3000/journals?' + new URLSearchParams({
+                user: value.user.id
+            }))
+            .then((response) => response.json())
+            .then(data => {
+                this.setState({ entries: data });    
+            })
+        }
+    }
+
+    // useEffect( () => {
+    //     fetch('http://localhost:3000/journals?' + new URLSearchParams({
+    //         user: '63b3234df79c9575703ac220'
+    //     }))
+    //     .then((response) => response.json())
+    //     .then(data => {
+    //         setEntries(data);
+    //     })
+    // }, [entries, setEntries])
+
+    // const journalEntries = entries.reverse().map((entry) => {
+    //     return (
+    //         <Entry 
+    //             key={entry.id}
+    //             entry={entry.entry} 
+    //             date={entry.createdAt} 
+    //             handleDelete={handleDelete} 
+    //             handleUpdate={handleUpdate} 
+    //         />
+    //     )
+    // })
+
+    makeEntries() {
+        let value = this.context;
+        const entries = this.state.entries.reverse().map((entry) => {
+            return (
+                <Entry 
                 key={entry.id}
                 entry={entry.entry} 
                 date={entry.createdAt} 
-                handleDelete={handleDelete} 
-                handleUpdate={handleUpdate} 
-            />
-        )
-    })
+                />
+            )
+        });
+        return entries;
+    }
 
-    return (
-        <div className="journal-container">
-            <Navigation />
-            <NewJournal />
-            {/* <Entry id={'63b335c2282b3680d473ef26'} entry={'entry string here'} date={'2023-01-02T19:51:30.092Z'} /> */}
-            <div className="scroll-entries-container">
-                {journalEntries}
+    render() {
+        let value = this.context;
+        const entryElements = this.makeEntries();
+        return (
+            <div className="journal-container">
+                <Navigation />
+                <NewJournal userId={value.user.id}/>
+                <JournalEntries entries={entryElements}/>
             </div>
-            
-        </div>
-    )
+        )
+    }
 }
 
+JournalContainer.contextType = UserContext;
+
 export default JournalContainer;
+
+    /* <Entry id={'63b335c2282b3680d473ef26'}
+    entry={'entry string here'}
+    date={'2023-01-02T19:51:30.092Z'} /> */

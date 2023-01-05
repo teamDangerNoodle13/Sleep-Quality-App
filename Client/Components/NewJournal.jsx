@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function NewJournal() {
+function NewJournal(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -9,7 +9,7 @@ function NewJournal() {
         const formData = new FormData(form);
 
         const formJSON = Object.fromEntries(formData.entries())
-        console.log('entry', formJSON.newEntry)
+        // console.log('entry', formJSON.newEntry)
 
         fetch('http://localhost:3000/journals', {
             method: 'POST',
@@ -19,7 +19,7 @@ function NewJournal() {
             },
             mode: 'cors',
             body: JSON.stringify({ 
-                user: '63b3234df79c9575703ac220',
+                user: props.userId,
                 entry: formJSON.newEntry
             })
         })

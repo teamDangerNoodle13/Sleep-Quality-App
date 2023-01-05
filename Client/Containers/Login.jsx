@@ -1,7 +1,8 @@
 import LoginIsland from '../Components/LoginIsland.jsx';
-import Navigation from './Navigation.jsx';
+import NavigationMod from './NavigationMod.jsx';
 import React from 'react';
 import UserContext from './UserContext.jsx';
+
 
 const Login = () => {
 
@@ -10,7 +11,7 @@ const Login = () => {
       {(value) => {
         return (
           <div className='login-container'>
-            <Navigation />
+            <NavigationMod />
             <h3>Track and improve your sleep... </h3>
             <LoginIsland setUser={value.setUser}/>
           </div>
