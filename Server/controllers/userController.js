@@ -45,9 +45,9 @@ userController.addUser = async (req, res, next) => {
 };
 
 userController.verifyUser = (req, res, next) => {
-  const { email, password, name } = req.body;
+  console.log('Made it to verifyUser');
 
-  
+  const { email, password, name } = req.body;
 
   User.findOne({
     email: email
@@ -63,7 +63,7 @@ userController.verifyUser = (req, res, next) => {
           console.log('passwords do not match')
         }
       });
-        res.locals.user= user;
+        res.locals.user = user;
         return next();
   
     })
