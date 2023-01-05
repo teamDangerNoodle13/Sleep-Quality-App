@@ -8,6 +8,11 @@ body {
     // overflow: hidden;
 }
 
+a{
+    color: white;
+    text-decoration: none;
+}
+
 .nav {
     // background-color: #5b04bc;
     font-family: Comfortaa;
@@ -85,13 +90,14 @@ body {
 
     h3{
         margin-block-start: 1em;
-        margin-block-end: 0.5em;
+        margin-block-end: 0.3em;
     }
 
     #buttonRow{
         display: flex;
         justify-content: center;
         align-self: space-between;
+        padding-top: .30em;
 
         .login{
             background-color: #3f334d;
@@ -162,18 +168,14 @@ body {
 
 .register-container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    min-height: 300px;
-    max-width: 500px;
+    min-height: 100px;
+    min-width: 300px;
 
-    #register-form{
-        align-self: center;
-        height: 200px;
-        width: 300px
-
+    
     input{
         margin: 10px 0;
     }
@@ -183,6 +185,62 @@ body {
     input[type=password]{
 
     }
+
+}
+#register-form{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    height: 200px;
+    width: 300px;
+
+    margin-top: 1em;
+
+    #buttonRow {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0.7em;
+
+        #register{
+            color: white;
+            font-family: Comfortaa;
+            width: 6em;
+            height: 2em;
+            font-size: 1em;
+
+            border: none;
+            border-radius: 0.25em;
+            box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+            background-image: linear-gradient(
+                220deg,
+                hsl(268deg 96% 38%) 0%,
+                hsl(268deg 94% 36%) 15%,
+                hsl(268deg 92% 34%) 25%,
+                hsl(268deg 90% 32%) 33%,
+                hsl(268deg 88% 30%) 39%,
+                hsl(268deg 86% 29%) 46%,
+                hsl(268deg 84% 27%) 54%,
+                hsl(268deg 83% 25%) 64%,
+                hsl(268deg 81% 23%) 78%,
+                hsl(268deg 79% 21%) 100%
+              );
+        }
+        #login{
+            text-decoration: none;
+            background-color: #3f334d;
+            font-family: Comfortaa;
+            font-size: 1em;
+            color: #d9dce5;
+    
+            margin: 0.75em;
+            padding: 0.5em;
+    
+            height: 1em;
+            min-width: 50px;
+    
+            border-radius: 0.25em;
+        }
     }
 }
 
