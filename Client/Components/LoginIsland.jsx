@@ -42,8 +42,12 @@ const LoginIsland = (props) => {
         }
       })
       .then((json) => {
-        const { id, name } = json;
-        props.setUser({ id, name });
+        const { _id, name } = json;
+        const userData = {
+          id: _id,
+          name: name
+        }
+        props.setUser(userData);
         navigate('/home');
       })
       .catch(err => {
@@ -54,7 +58,7 @@ const LoginIsland = (props) => {
 
     return (
           <div className="login-container">
-            <form onSubmit={handleSubmit}>
+            <form className ="login-form" onSubmit={handleSubmit}>
                 <input
                   className="email"
                   type="email"
