@@ -408,4 +408,36 @@ a{
             color: #F4f5f7;
         }
     }
+    
+}
+.userPageJournal {
+    text-align: center;
+    margin: 1em;
+    padding: .5em .25em .5em;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
+    background-color: #3f334d;
+    color: #d9dce5;
+    font-size: 1.5em;
+}
+.userPageResAndScore {
+    color: #d9dce5;
+    background-color: #3f334d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 1em;
+    height: 6.5em;
+    border-radius: 1em;
+}
+
+.userPageResources {
+    background-color: #3f334d;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    margin: 1em;
+    border-radius: 1em;
 }

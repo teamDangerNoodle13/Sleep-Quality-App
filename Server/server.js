@@ -21,7 +21,7 @@ app.use('/forms', formsRouter);
 app.use('/journals', journalRouter);
 
 app.use('/', (req, res, next) => {
-  console.log('welcome to the backend, you filthy animals');
+  // console.log('welcome to the backend, you filthy animals');
   return next();
 });
 
