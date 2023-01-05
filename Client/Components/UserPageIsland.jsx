@@ -13,11 +13,18 @@ const UserPageIsland = () => {
                 <div>Go to Journal</div>
             </div>
             </Link>
+
             <div className= "userPageResAndScore">
-                <span>Response</span>
-                <span>Sleep Score</span>
+                Sleep Score:
+                <div>
+                    Response:
+                </div> 
             </div>
-            <div>Resources</div>
+            <h2>Resources</h2>
+            <div className="userPageResources">
+                Resources
+            </div>
+
         </div>
     )
 }
