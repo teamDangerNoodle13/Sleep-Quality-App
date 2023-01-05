@@ -6,11 +6,11 @@ const Home = (props) => {
 
   return (
     <div className='home-container'>
-      <UserContext.Consumer>
+      {/* <UserContext.Consumer> */}
         <Navigation />
-        <h3>Welcome {props.user.name || 'stranger'}!</h3> // DYNAMIC
+        <h3>Welcome!</h3> // DYNAMIC
         <HomeIsland />
-      </UserContext.Consumer>
+      {/* </UserContext.Consumer> */}
     </div>
   )
 }

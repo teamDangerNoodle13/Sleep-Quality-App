@@ -7,18 +7,18 @@ const formController = {};
  *  TODO: link journal entries
  */
 formController.saveFormResponse = (req, res, next) => {
-  const { userId, answers, sum } = req.body;
+  const { user, answers, totalScore } = req.body;
 
-  Form.create({ user : userId, answers: answers, totalScore: sum })
+  Form.create({ user: user, answers: answers, totalScore: totalScore })
     .then((formDoc) => {
       res.locals.savedFormResponses = formDoc;
       return next();
     })
     .catch((error) => {
       return next({
-        log: `ERROR in userController.saveFormResponse ${error}`,
+        log: `ERROR in formController.saveFormResponse ${error}`,
         message: {
-          err: `Encountered an error in userController.saveFormResponse`,
+          err: `Encountered an error in formController.saveFormResponse`,
         },
       });
     });
@@ -37,9 +37,9 @@ formController.getUserFormsResponses = (req, res, next) => {
     })
     .catch((error) => {
       return next({
-        log: `ERROR in userController.getUserFormsResponses ${error}`,
+        log: `ERROR in formController.getUserFormsResponses ${error}`,
         message: {
-          err: `Encountered an error in userController.getUserFormsResponses`,
+          err: `Encountered an error in formController.getUserFormsResponses`,
         },
       });
     });
