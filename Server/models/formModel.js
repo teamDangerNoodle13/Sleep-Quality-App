@@ -3,9 +3,10 @@ const mongooseInstance = require('./mongoUtil.js');
 
 const formSchema = mongooseInstance.Schema(
   {
-    user: { type: mongooseInstance.Types.ObjectId, ref: 'user' },
+    user: {type: Number, required: true},
+    // user: { type: mongooseInstance.Types.ObjectId, ref: 'user' },
     answers: { type: Array, required: true },
-    totalScore: { type: Number, required: true, default: 0 },
+    totalScore: { type: Number, required: true },
     // journalId: { type: mongooseInstance.Types.ObjectId, ref: 'journal' },
     // Umair: I think we should have a field for the date of the form submission
     // and the date of the form creation. This will help us in the future when we

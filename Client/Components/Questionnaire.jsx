@@ -5,7 +5,10 @@ import {useNavigate} from "react-router-dom";
 import Navigation from "../Containers/Navigation.jsx";
 import Question from "./Question.jsx";
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 6767b0858ea99d3eb3e37e7f56483cb9b066f189
 
 function Questionnaire() {
     const navigate =  useNavigate();
@@ -93,7 +96,7 @@ function Questionnaire() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                user: userId,
+                user: 3,
                 answers: answers,
                 totalScore: sum
             })
