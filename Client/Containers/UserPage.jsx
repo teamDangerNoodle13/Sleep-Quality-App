@@ -13,7 +13,7 @@ const UserPage = () => {
           <div className='userPage-container'>
             <Navigation />
             <h1>Hello UserPage</h1>
-            <UserPageIsland />
+            <UserPageIsland sum={value.sum}/>
           </div>
         )
       }}
