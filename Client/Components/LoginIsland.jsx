@@ -2,7 +2,7 @@ import e from "cors";
 import React, { useEffect, useState } from "react";
 import { Link, redirect, useNavigate } from "react-router-dom";
 
-const LoginIsland = () => {
+const LoginIsland = (props) => {
 
   const [data, setData] = useState({
         email: "",
@@ -21,59 +21,72 @@ const LoginIsland = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-     const email = e.target[0].value;
-     const password = e.target[1].value;
-     const userObj = { email, password };
+    const email = e.target[0].value;
+    const password = e.target[1].value;
+    const userObj = { email, password };
 
-      fetch('http://localhost:3000/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-          },
-        mode: 'cors',
-        body: JSON.stringify(userObj)
-        })
-        .then(response => {
-          (response !== null) ? navigate('/home') : navigate('/register');
-        })
-        .catch(err => {
-          console.log('ERROR: ', err);
-        })
-}
+    fetch('http://localhost:3000/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        },
+      mode: 'cors',
+      body: JSON.stringify(userObj)
+      })
+      .then(response => {
+        if(response === null) {
+          navigate('/register');
+        } else {
+          return response.json();
+        }
+      })
+      .then((json) => {
+        const { _id, name } = json;
+        const userData = {
+          id: _id,
+          name: name
+        }
+        props.setUser(userData);
+        navigate('/home');
+      })
+      .catch(err => {
+        console.log('ERROR: ', err);
+      })
+  }
 
 
     return (
-        <div className="login-container">
-            <form onSubmit={handleSubmit}>
+          <div className="login-container">
+            <form className ="login-form" onSubmit={handleSubmit}>
                 <input
-                className="email"
-                type="email"
-                name="email"
-                placeholder="email..."
-                value ={email}
-                onChange={onChange}
-                required
+                  className="email"
+                  type="email"
+                  name="email"
+                  placeholder="email..."
+                  value ={email}
+                  onChange={onChange}
+                  required
                 />
                 <input
-                className="password"
-                type="password"
-                name="password"
-                placeholder="password..."
-                value ={password}
-                onChange={onChange}
-                required
+                  className="password"
+                  type="password"
+                  name="password"
+                  placeholder="password..."
+                  value ={password}
+                  onChange={onChange}
+                  required
                 />
                 <div id= "buttonRow">
-                  <button type ="submit" className="login" id="login" >
-                    Log in
-                  </button>
-                  <Link to="/register" className="register" id="register">
-                    Sign Up
-                  </Link>
+                <button type ="submit" className="login" id="login" >
+                  Log in
+                </button>
+                <Link to="/register" className="register" id="register">
+                  Sign Up
+                </Link>
                 </div>
-            </form>
-        </div>
+              </form>
+            </div>
     )
 }
 export default LoginIsland;

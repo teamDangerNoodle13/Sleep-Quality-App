@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 
 
 const RegisterIsland = () => {
@@ -40,8 +40,8 @@ const navigate = useNavigate();
 }
 
     return (
-        <div className="login-container">
-            <form onSubmit={handleSubmit} >
+        <div className="register-container">
+            <form id="register-form" onSubmit={handleSubmit} >
             <input
                 className="firstName"
                 type="text"
@@ -73,6 +73,9 @@ const navigate = useNavigate();
                   <button type ="submit" className="register" id="register" >
                     Register
                   </button>
+                <Link to="/" className="login" id="login">
+                  Back to login
+                </Link>
                 </div>
             </form>
         </div>

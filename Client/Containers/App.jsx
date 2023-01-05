@@ -8,35 +8,32 @@ import Home from './Home.jsx';
 import UserPage from './UserPage.jsx';
 import JournalContainer from './JournalContainer.jsx';
 import Questionnaire from "../Components/Questionnaire.jsx";
+import UserContext from './UserContext.jsx';
 
-const UserContext = React.createContext({
-    user: {
-        id: 'o7239fja98psdfja',
-        name: 'Fred'
-    },
-    // setUser function
-});
 
 const App = () => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({
+        id: 'o7239fja98psdfja',
+        name: 'Fred'
+    });
 
     return(
-        <div>
-            <UserContext.Provider value={{user, setUser}} >
+        <UserContext.Provider value={{user, setUser}} >
+            <div>
                 <Routes>
                     <Route path='/' element={ <Login />} />
                     <Route path='/register' element={ <Register />} />
                     <Route path='/home' element={ <Home />} />
-                    <Route path='/questions' element={ <Questionnaire /> } />
+                    <Route path='/home/questions' element={ <Questionnaire /> } />
                     <Route path='/userPage' element={<UserPage /> } />
-                    <Route path='/journals' element={ <JournalContainer /> } />
+                    <Route path='/home/journals' element={ <JournalContainer /> } />
                     {/* 
                         This is a route to a stretch feature.
                         <Route path='/sleep-data' element={} /> 
                     */}
                 </Routes>
-            </UserContext.Provider >
-        </div>
+            </div>
+        </UserContext.Provider >
     )
 }
 

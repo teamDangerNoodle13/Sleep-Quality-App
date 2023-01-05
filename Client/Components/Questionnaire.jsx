@@ -1,13 +1,14 @@
 import { BrowserRouter, Navigate, Route, Routes, useRevalidator } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import {userNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 import Navigation from "../Containers/Navigation.jsx";
 import Question from "./Question.jsx";
 
-const navigate =  useNavigate();
+
 
 function Questionnaire() {
+    const navigate =  useNavigate();
     // currentQuestion is a number that corresponds to an index in the answers array
     const [currentQuestion, setCurrentQuestion] = useState(0);
     // answers is an array of objects [{questionName: score}]
