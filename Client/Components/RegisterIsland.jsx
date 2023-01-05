@@ -62,7 +62,7 @@ const navigate = useNavigate();
                 className="firstName"
                 type="text"
                 name="name"
-                placeholder="First Name..."
+                placeholder="First name..."
                 value ={name}
                 onChange={onChange}
                 required
@@ -71,7 +71,7 @@ const navigate = useNavigate();
                 className="email"
                 type="email"
                 name="email"
-                placeholder="email..."
+                placeholder="Email..."
                 value ={email}
                 onChange={onChange}
                 required
@@ -80,7 +80,7 @@ const navigate = useNavigate();
                 className="password"
                 type="password"
                 name="password"
-                placeholder="password..."
+                placeholder="Password..."
                 value ={password}
                 onChange={onChange}
                 required

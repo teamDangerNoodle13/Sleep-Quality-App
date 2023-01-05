@@ -6,10 +6,10 @@ import React from 'react';
 
 // nav bar for all pages
 
-const Navigation = () => {
+const NavigationMod = () => {
   return (
     <div className='nav'>
-        <Link to="/home">
+        <Link to="/">
             <AiOutlineHome 
                 size={'2em'} 
                 style={{color: '#F4f5f7'}}
@@ -23,4 +23,4 @@ const Navigation = () => {
   )
 }
 
-export default Navigation
+export default NavigationMod;
