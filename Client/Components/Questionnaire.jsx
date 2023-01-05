@@ -99,7 +99,7 @@ function Questionnaire() {
         }) 
         .then((res) => res.json())
         .then((data) => {
-        (data !== null) ? navigate('/home/userPage') : alert('Error submitting form');
+        (data !== null) ? navigate('/userPage') : alert('Error submitting form');
         })
         .catch((err) => {
             console.log(err);
