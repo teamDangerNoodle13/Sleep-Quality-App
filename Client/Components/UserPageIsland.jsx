@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { VscNotebook } from 'react-icons/vsc';
 
 
-const UserPageIsland = () => {
+const UserPageIsland = (props) => {
     return (
         <div>
             <Link to="/home/journals">
@@ -15,7 +15,7 @@ const UserPageIsland = () => {
             </Link>
 
             <div className= "userPageResAndScore">
-                Sleep Score:
+                Sleep Score: {props.sum}
                 <div>
                     Response:
                 </div> 

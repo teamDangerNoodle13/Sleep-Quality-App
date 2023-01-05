@@ -6,7 +6,7 @@ import Navigation from "../Containers/Navigation.jsx";
 import Question from "./Question.jsx";
 
 
-function Questionnaire() {
+function Questionnaire(props) {
     const navigate =  useNavigate();
     // currentQuestion is a number that corresponds to an index in the answers array
     const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -84,6 +84,7 @@ function Questionnaire() {
 
     function handleSubmit(event) {
         event.preventDefault();
+        props.setSum(sum);
         alert(`Total Sleep Hygiene Score: ${sum}`)
         console.log('submitted');
         fetch ('/forms', {
