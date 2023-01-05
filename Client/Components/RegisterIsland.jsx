@@ -59,7 +59,7 @@ const navigate = useNavigate();
         <div className="register-container">
             <form id="register-form" onSubmit={handleSubmit} >
             <input
-                className="firstName"
+                className="registerInput"
                 type="text"
                 name="name"
                 placeholder="First name..."
@@ -68,7 +68,7 @@ const navigate = useNavigate();
                 required
                 />
                 <input
-                className="email"
+                className="registerInput"
                 type="email"
                 name="email"
                 placeholder="Email..."
@@ -77,7 +77,7 @@ const navigate = useNavigate();
                 required
                 />
                 <input
-                className="password"
+                className="registerInput"
                 type="password"
                 name="password"
                 placeholder="Password..."
