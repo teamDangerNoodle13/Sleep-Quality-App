@@ -350,4 +350,26 @@ body {
             color: #F4f5f7;
         }
     }
+    
+}
+.userPageJournal {
+    text-align: center;
+    margin: 1em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
+    background-color: #3f334d;
+    color: #d9dce5;
+}
+.userPageResAndScore {
+    background-color: green;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 1em;
+    height: 1.5em;
+    
+
 }
